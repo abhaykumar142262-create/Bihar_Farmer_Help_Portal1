@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: bihar-kisan-helping
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn --bind 0.0.0.0:$PORT app:app
+    healthCheckPath: /
+    envVars:
+      - key: DATA_GOV_IN_API_KEY
+        sync: false
